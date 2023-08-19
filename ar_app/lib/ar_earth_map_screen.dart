@@ -62,6 +62,8 @@ class _ArEarthMapScreenState extends State<ArEarthMapScreen> {
       );
       node.rotation?.value = updatedRotation as vector64.Vector4;
     }
+
+    
   }
 
   @override
