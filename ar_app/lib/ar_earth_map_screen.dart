@@ -14,30 +14,24 @@ class ArEarthMapScreen extends StatefulWidget {
 
 class _ArEarthMapScreenState extends State<ArEarthMapScreen> {
   ArCoreController? augmentedRealityCoreController;
-
-  // Rotation variables
   bool isRotating = false;
   double startingRotation = 0;
   double currentRotation = 0;
-
-  List<ArCoreNode> arCoreNodes = []; // List to keep track of ARCore nodes
+  List<ArCoreNode> arCoreNodes = [];
 
   augmentedRealityViewCreated(ArCoreController coreController) {
     augmentedRealityCoreController = coreController;
-
-    displayEarthMapSphere(augmentedRealityCoreController!);
+    displayRedBall(augmentedRealityCoreController!);
   }
 
-  displayEarthMapSphere(ArCoreController coreController) async {
-    final ByteData earthTextureBytes = await rootBundle.load("images/earth_map.jpg");
-
+  displayRedBall(ArCoreController coreController) async {
     final materials = ArCoreMaterial(
-      color: Colors.blue,
-      textureBytes: earthTextureBytes.buffer.asUint8List(),
+      color: Colors.red,
     );
 
     final sphere = ArCoreSphere(
       materials: [materials],
+      radius: 0.1,
     );
 
     final node = ArCoreNode(
@@ -46,7 +40,7 @@ class _ArEarthMapScreenState extends State<ArEarthMapScreen> {
     );
 
     augmentedRealityCoreController!.addArCoreNode(node);
-    arCoreNodes.add(node); // Add the ARCore node to the list
+    arCoreNodes.add(node);
   }
 
   void updateRotation(double rotation) {
@@ -62,41 +56,33 @@ class _ArEarthMapScreenState extends State<ArEarthMapScreen> {
       );
       node.rotation?.value = updatedRotation as vector64.Vector4;
     }
-
-
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          "AR Earth Maps",
-        ),
+        title: const Text("AR Red Ball"),
         centerTitle: true,
       ),
       body: GestureDetector(
         onPanUpdate: (details) {
           if (details.delta.dx != 0 || details.delta.dy != 0) {
-            // Calculate the rotation amount based on touch movement
             double dx = details.delta.dx;
             double dy = details.delta.dy;
             double touchSensitivity = 2.0;
 
             if (isRotating) {
               currentRotation = startingRotation + dx * touchSensitivity;
-              // Apply the rotation to the ARCore node
               updateRotation(currentRotation);
             }
           }
         },
         onPanStart: (details) {
-          // Start rotation when touch begins
           isRotating = true;
           startingRotation = currentRotation;
         },
         onPanEnd: (details) {
-          // End rotation when touch ends
           isRotating = false;
         },
         child: ArCoreView(
@@ -104,5 +90,11 @@ class _ArEarthMapScreenState extends State<ArEarthMapScreen> {
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    augmentedRealityCoreController?.dispose();
+    super.dispose();
   }
 }
