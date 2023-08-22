@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'Screens/ar_cam_screen.dart';
+import 'package:virtualphysix/Screens/home_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,12 +11,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'AR Physics App', // Update the title
+      title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.deepPurple, // Use primarySwatch for consistent color
+        primarySwatch: Colors.deepPurple,
         visualDensity: VisualDensity.adaptivePlatformDensity,
+
       ),
-      home: ArCamScreen(), // Set ArCamScreen as the initial screen
+      home: const HomePage(),
     );
   }
 }
