@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>520639351969-o186csg1vcjki7oednkr7m6r4nuji1o3.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.520639351969-o186csg1vcjki7oednkr7m6r4nuji1o3</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDtONAdRbW9ibSrwCjpsF3JnkhR_3NvHZA</string>
+	<key>GCM_SENDER_ID</key>
+	<string>520639351969</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.vertualPhysix</string>
+	<key>PROJECT_ID</key>
+	<string>virtualphysix-8e8fd</string>
+	<key>STORAGE_BUCKET</key>
+	<string>virtualphysix-8e8fd.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:520639351969:ios:465882ebbb5dfac45fb4e0</string>
+</dict>
+</plist>

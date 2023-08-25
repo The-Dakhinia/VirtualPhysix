@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "520639351969",
+    "project_id": "virtualphysix-8e8fd",
+    "storage_bucket": "virtualphysix-8e8fd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:520639351969:android:27a847e36b00c53c5fb4e0",
+        "android_client_info": {
+          "package_name": "com.example.vertual_physix"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "520639351969-q1mkg2287ic2bue1g5k2jb2dblf3f3jm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAx-6GpbaOAmRTXHJhHlQI6sEQOV2U6S6A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "520639351969-mtd97h47i9plmoudjr5952eqgmfsaq8p.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "520639351969-o186csg1vcjki7oednkr7m6r4nuji1o3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.vertualPhysix"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
