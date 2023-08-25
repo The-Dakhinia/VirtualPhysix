@@ -1,2 +1,5 @@
 # VirtualPhysix
-A Smart Education App using Augmented Reality and Flutter frameworks that includes inbuilt AR packages .
+# Problem Statement - 
+# The current methods of teaching complex physics concepts often rely on traditional classroom lectures, textbooks, and 2D visual aids, which can be challenging for students to grasp and may not provide a fully immersive learning experience. Students often struggle to visualize abstract concepts, hindering their understanding and retention of the subject matter. There is a need for an innovative educational solution that leverages Augmented Reality (AR) technology to create 3D visualizations and real-world interactions, allowing students to explore and understand physics concepts in an engaging and interactive manner. 
+# Solution - 
+# To address the challenges mentioned in the problem statement, we propose the development of an Augmented Reality (AR) application tailored for physics education. The AR application will be designed to provide students with an immersive and interactive learning experience, helping them comprehend complex physics concepts effectively.
