@@ -3,7 +3,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:vertual_physix/main.dart';
+import 'package:virtual_physix/main.dart';
 
 import '../Services/auth_services.dart';
 // import 'package:google_sign_in/google_sign_in.dart';

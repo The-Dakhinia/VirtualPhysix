@@ -2,9 +2,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:vertual_physix/Screens/home_page.dart';
-import 'package:vertual_physix/Screens/user_registration.dart';
-import 'package:vertual_physix/Services/auth_services.dart';
+import 'package:virtual_physix/Screens/home_page.dart';
+import 'package:virtual_physix/Screens/user_registration.dart';
+import 'package:virtual_physix/Services/auth_services.dart';
 
 import 'firebase_options.dart';
 

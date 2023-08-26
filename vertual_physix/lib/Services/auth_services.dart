@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:vertual_physix/Screens/home_page.dart';
+import 'package:virtual_physix/Screens/home_page.dart';
 
 class AuthService {
   Future<void> signInWithGoogle(BuildContext context) async {
