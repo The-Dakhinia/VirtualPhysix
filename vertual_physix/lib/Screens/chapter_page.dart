@@ -40,10 +40,12 @@ class _SelectChapterPageState extends State<SelectChapterPage> {
           },
           icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
         ),
+        backgroundColor:  Colors.purple,
         title: const Text(
-          "Select Chapter",
-          style: TextStyle(fontSize: 23, color: Colors.white),
+            "Select Chapter",
+            style: TextStyle(fontSize: 23, color: Colors.white),
         ),
+        centerTitle: true,
       ),
       body: Container(
         width: MediaQuery.of(context).size.width,
@@ -52,7 +54,11 @@ class _SelectChapterPageState extends State<SelectChapterPage> {
           gradient: LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
-              colors: [Colors.deepPurple, Colors.black]),
+              colors: [Color.fromARGB(255, 197, 74, 251),
+                Color.fromARGB(255, 23, 15, 54),
+                Color.fromARGB(255, 113, 98, 254)
+              ]
+          ),
         ),
         child: Expanded(
           child: Padding(
@@ -65,14 +71,28 @@ class _SelectChapterPageState extends State<SelectChapterPage> {
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
-                        builder: (context) => SelectSubChapterPage(),
+                      PageRouteBuilder(
+                        pageBuilder: (context, animation, secondaryAnimation) => const SelectSubChapterPage(),
+                        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                          const begin = Offset(1.0, 0.0);
+                          const end = Offset.zero;
+                          const curve = Curves.easeInOut;
+
+                          var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+                          var offsetAnimation = animation.drive(tween);
+
+                          return SlideTransition(
+                            position: offsetAnimation,
+                            child: child,
+                          );
+                        },
                       ),
                     );
                   },
                   child: Card(
-                    color: Colors.deepPurple[400],
-                    elevation: 5,
+                    color: Colors.black45,
+                    shadowColor: Colors.black45,
+                    elevation: 10,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),

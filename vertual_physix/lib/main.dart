@@ -11,7 +11,6 @@ import 'firebase_options.dart';
 
 //global object for accessing device screen size
 late Size mq;
-
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -45,7 +44,6 @@ class MyApp extends StatelessWidget {
       title: 'Vertual Physix',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.deepPurple,
         visualDensity: VisualDensity.adaptivePlatformDensity,
 
       ),
