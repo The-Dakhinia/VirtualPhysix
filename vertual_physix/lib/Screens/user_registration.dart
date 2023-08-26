@@ -4,6 +4,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:virtual_physix/main.dart';
+import 'package:google_fonts/google_fonts.dart';
+
 
 import '../Services/auth_services.dart';
 // import 'package:google_sign_in/google_sign_in.dart';
@@ -45,7 +47,7 @@ class _LoginScreenState extends State<LoginScreen> {
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 197, 74, 251),
         automaticallyImplyLeading: false,
-        title: const Text('Welcome to VirtualPhysix'),
+        title: Text('Welcome to VirtualPhysix', style: GoogleFonts.audiowide(fontSize: 20)),
         centerTitle: true,
       ),
 
@@ -53,9 +55,11 @@ class _LoginScreenState extends State<LoginScreen> {
       body: Stack(children: [
         //app logo
         // Background gradient
-        Container(
-          decoration: BoxDecoration(
-            color: Color.fromARGB(255, 13, 8, 33)
+        // Background GIF
+        Positioned.fill(
+          child: Image.asset(
+            'lib/assets/back.gif', // Replace with the actual path to your GIF image
+            fit: BoxFit.cover, // Adjust the fit as needed
           ),
         ),
         AnimatedPositioned(
@@ -108,13 +112,13 @@ class _LoginScreenState extends State<LoginScreen> {
 
                 //login with google label
                 label: RichText(
-                  text: const TextSpan(
+                  text: TextSpan(
                       style: TextStyle(color: Colors.white, fontSize: 16),
                       children: [
-                        TextSpan(text: 'Login with '),
+                        TextSpan(text: 'Login with ', style: GoogleFonts.audiowide(fontSize: 15)),
                         TextSpan(
                             text: 'Google',
-                            style: TextStyle(fontWeight: FontWeight.w500)),
+                            style: GoogleFonts.audiowide(fontWeight: FontWeight.w500)),
                       ]),
                 ))),
       ]),
