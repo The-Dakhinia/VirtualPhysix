@@ -1,7 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:virtual_physix/Screens/user_registration.dart';
+import '../Services/auth_services.dart';
 import 'chapter_page.dart';
+import 'package:google_fonts/google_fonts.dart';
+
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -26,7 +31,7 @@ class _HomePageState extends State<HomePage> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           backgroundColor: Colors.green.withOpacity(0.8),
-          content: const Text('Login Successfully!', style: TextStyle(color: Colors.black),),
+          content: Text('Logged in Successfully!', style: GoogleFonts.audiowide(fontSize: 15),),
           duration: const Duration(seconds: 3),
         ),
       );
@@ -85,11 +90,29 @@ class _HomePageState extends State<HomePage> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const SizedBox(height: 20),
-                CircleAvatar(
-                  backgroundImage: NetworkImage(userProfilePic), // Set user profile picture
-                  radius: 50,
-                  backgroundColor: Colors.white70,
+                FutureBuilder<void>(
+                  future: precacheImage(NetworkImage(userProfilePic), context),
+                  builder: (BuildContext context, AsyncSnapshot<void> snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      // Show the loading spinner while the image is being pre-cached
+                      return const SpinKitFadingCircle(
+                        color: Color.fromARGB(255, 208, 77, 250),
+                        size: 70.0,
+                      );
+                    } else if (snapshot.hasError) {
+                      // Handle errors
+                      return Text('Error loading image');
+                    } else {
+                      // Image pre-cached, now show the CircleAvatar
+                      return CircleAvatar(
+                        backgroundImage: NetworkImage(userProfilePic),
+                        radius: 50,
+                        backgroundColor: Colors.white70,
+                      );
+                    }
+                  },
                 ),
+
                 const SizedBox(height: 10),
                 Text(userName != null
                     ? 'Hi ${userName?.split(' ').first}!'
@@ -120,10 +143,8 @@ class _HomePageState extends State<HomePage> {
                                   const begin = Offset(1.0, 0.0);
                                   const end = Offset.zero;
                                   const curve = Curves.easeInOut;
-
                                   var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
                                   var offsetAnimation = animation.drive(tween);
-
                                   return SlideTransition(
                                     position: offsetAnimation,
                                     child: child,
@@ -146,7 +167,7 @@ class _HomePageState extends State<HomePage> {
                                 style: const TextStyle(
                                   fontSize: 25,
                                   color: Colors.white,
-                                  fontWeight: FontWeight.bold,
+                                  fontWeight: FontWeight.w500,
                                 ),
                                 textAlign: TextAlign.center,
                               ),
@@ -177,6 +198,26 @@ class _HomePageState extends State<HomePage> {
       onSelected: (String result) {
         if (result == 'logout') {
           // Handle the logout action here
+          AuthService.signOut();
+          Navigator.pushReplacement(
+            context,
+            PageRouteBuilder(
+              pageBuilder: (context, animation, secondaryAnimation) => const LoginScreen(),
+              transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                const begin = Offset(1.0, 0.0);
+                const end = Offset.zero;
+                const curve = Curves.easeInOut;
+
+                var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+                var offsetAnimation = animation.drive(tween);
+
+                return SlideTransition(
+                  position: offsetAnimation,
+                  child: child,
+                );
+              },
+            ),
+          );
         }
       },
       itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
