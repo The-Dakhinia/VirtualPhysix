@@ -75,7 +75,6 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
 
 
-
         //google login button
         Positioned(
             bottom: mq.height * .15,
@@ -95,9 +94,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     builder: (BuildContext context) {
                       return WillPopScope(
                         onWillPop: () async => false, // Disable popping with back button
-                        child: Center(
+                        child: const Center(
                           child: SpinKitFadingCircle(
-                            color: const Color.fromARGB(255, 208, 77, 250),
+                            color: Color.fromARGB(255, 208, 77, 250),
                             size: 50.0,
                           ),
                         ),

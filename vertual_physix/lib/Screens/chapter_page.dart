@@ -19,6 +19,24 @@ List<String> chapters = [
   "Communication Systems"
 ];
 
+List<String> chapterImages = [
+  'lib/assets/vector/ch1.png',
+  'lib/assets/vector/ch2.png',
+  'lib/assets/vector/ch3.png',
+  'lib/assets/vector/ch4.png',
+  'lib/assets/vector/ch5.png',
+  'lib/assets/vector/ch6.png',
+  'lib/assets/vector/ch7.png',
+  'lib/assets/vector/ch8.png',
+  'lib/assets/vector/ch9.png',
+  'lib/assets/vector/ch10.png',
+  'lib/assets/vector/ch11.png',
+  'lib/assets/vector/ch12.png',
+  'lib/assets/vector/ch13.png',
+  'lib/assets/vector/ch14.png',
+  'lib/assets/vector/ch15.png',
+];
+
 class SelectChapterPage extends StatefulWidget {
   const SelectChapterPage({super.key});
 
@@ -27,6 +45,8 @@ class SelectChapterPage extends StatefulWidget {
 }
 
 class _SelectChapterPageState extends State<SelectChapterPage> {
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,9 +84,14 @@ class _SelectChapterPageState extends State<SelectChapterPage> {
               ),
               child: Padding(
                 padding: const EdgeInsets.only(left: 8, right: 8, top: 8),
-                child: ListView.builder(
+                child: GridView.builder(
                   physics: const BouncingScrollPhysics(),
-                  itemCount: chapters.length,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    mainAxisSpacing: 10,
+                    crossAxisSpacing: 10,
+                  ),
+                  itemCount: 15,
                   itemBuilder: (context, index) {
                     return GestureDetector(
                       onTap: () {
@@ -99,17 +124,28 @@ class _SelectChapterPageState extends State<SelectChapterPage> {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        child: ListTile(
-                          title: Text(
-                            chapters[index],
-                            style: const TextStyle(
-                              fontSize: 20,
-                              color: Colors.white,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                          trailing: Icon(Icons.arrow_forward_ios, color: Colors.white),
-                        ),
+                        child: Center(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Image.asset(
+                                chapterImages[index],
+                                width: 100, // Adjust the size as needed
+                                height: 100,
+                                fit: index ==12 || index == 13 || index == 14 ? BoxFit.fill : BoxFit.contain,
+                              ),
+                              Text(
+                                chapters[index],
+                                style: const TextStyle(
+                                  fontSize: 18,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                                textAlign: TextAlign.center,
+                              )
+                            ],
+                          )
+                        )
                       ),
                     );
                   },

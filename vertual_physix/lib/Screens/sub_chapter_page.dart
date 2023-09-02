@@ -17,16 +17,31 @@ class _SelectSubChapterPageState extends State<SelectSubChapterPage> {
     "Visualize Solar System",
     "Play With 3D object",
     "Charging by Induction",
-    "Basic Properties of Eletric Charge",
+    "Basic Properties of Electric Charge",
     "Coulomb’s Law",
     "Forces between Multiple Charges",
     "Electric Field",
     "Electric Field Lines",
     "Electric Flux",
     "Electric Dipole",
-    "Dipole in a Uniform External Field",
     "Continuous Charge Distribution",
     "Gauss’s Law And Its Applications"
+  ];
+
+  final List<String> subChapterImages = [
+    'lib/assets/vector/subchapter/subch1.png',
+    'lib/assets/vector/subchapter/subch2.png',
+    'lib/assets/vector/subchapter/subch3.png',
+    'lib/assets/vector/subchapter/subch4.png',
+    'lib/assets/vector/subchapter/subch5.png',
+    'lib/assets/vector/subchapter/subch6.png',
+    'lib/assets/vector/subchapter/subch7.png',
+    'lib/assets/vector/subchapter/subch8.png',
+    'lib/assets/vector/subchapter/subch9.png',
+    'lib/assets/vector/subchapter/subch10.png',
+    'lib/assets/vector/subchapter/subch11.png',
+    'lib/assets/vector/subchapter/subch12.png',
+    'lib/assets/vector/subchapter/subch13.png',
   ];
 
   @override
@@ -66,100 +81,68 @@ class _SelectSubChapterPageState extends State<SelectSubChapterPage> {
               ),
               child: Padding(
                 padding: const EdgeInsets.only(left: 8, right: 8, top: 8),
-                child: ListView.builder(
+                child: GridView.builder(
                   physics: const BouncingScrollPhysics(),
-                  itemCount: subChapters.length,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    mainAxisSpacing: 10,
+                    crossAxisSpacing: 10,
+                  ),
+                  itemCount: 13,
                   itemBuilder: (context, index) {
                     return GestureDetector(
                       onTap: () {
-                        switch (subChapters[index]) {
-                          case "Conservation of Momentum":
-                            Navigator.push(
-                              context,
-                              PageRouteBuilder(
-                                pageBuilder: (context, animation, secondaryAnimation) => ARScreen1(),
-                                transitionsBuilder:
-                                    (context, animation, secondaryAnimation, child) {
-                                  const begin = Offset(1.0, 0.0);
-                                  const end = Offset.zero;
-                                  const curve = Curves.easeInOut;
+                        Navigator.push(
+                          context,
+                          PageRouteBuilder(
+                            pageBuilder: (context, animation, secondaryAnimation) =>
+                            const SelectSubChapterPage(),
+                            transitionsBuilder:
+                                (context, animation, secondaryAnimation, child) {
+                              const begin = Offset(1.0, 0.0);
+                              const end = Offset.zero;
+                              const curve = Curves.easeInOut;
 
-                                  var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
-                                  var offsetAnimation = animation.drive(tween);
+                              var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+                              var offsetAnimation = animation.drive(tween);
 
-                                  return SlideTransition(
-                                    position: offsetAnimation,
-                                    child: child,
-                                  );
-                                },
-                              ),
-                            );
-                            break;
-                          case "Visualize Solar System":
-                            Navigator.push(
-                              context,
-                              PageRouteBuilder(
-                                pageBuilder: (context, animation, secondaryAnimation) => ARScreen2(),
-                                transitionsBuilder:
-                                    (context, animation, secondaryAnimation, child) {
-                                  const begin = Offset(1.0, 0.0);
-                                  const end = Offset.zero;
-                                  const curve = Curves.easeInOut;
-
-                                  var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
-                                  var offsetAnimation = animation.drive(tween);
-
-                                  return SlideTransition(
-                                    position: offsetAnimation,
-                                    child: child,
-                                  );
-                                },
-                              ),
-                            );
-                            break;
-                          case "Play With 3D object":
-                            Navigator.push(
-                              context,
-                              PageRouteBuilder(
-                                pageBuilder: (context, animation, secondaryAnimation) => ARScreen3(),
-                                transitionsBuilder:
-                                    (context, animation, secondaryAnimation, child) {
-                                  const begin = Offset(1.0, 0.0);
-                                  const end = Offset.zero;
-                                  const curve = Curves.easeInOut;
-
-                                  var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
-                                  var offsetAnimation = animation.drive(tween);
-
-                                  return SlideTransition(
-                                    position: offsetAnimation,
-                                    child: child,
-                                  );
-                                },
-                              ),
-                            );
-                            break;
-                        // Add cases for other sub-chapters as needed
-                        }
+                              return SlideTransition(
+                                position: offsetAnimation,
+                                child: child,
+                              );
+                            },
+                          ),
+                        );
                       },
                       child: Card(
-                        color: Colors.black45,
-                        shadowColor: Colors.black45,
-                        elevation: 10,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: ListTile(
-                          title: Text(
-                            subChapters[index],
-                            style: const TextStyle(
-                              fontSize: 20,
-                              color: Colors.white,
-                              fontWeight: FontWeight.w500,
-                            ),
+                          color: Colors.black45,
+                          shadowColor: Colors.black45,
+                          elevation: 10,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
                           ),
-                          trailing: const Icon(Icons.arrow_forward_ios, color: Colors.white),
-                        ),
+                          child: Center(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Image.asset(
+                                    subChapterImages[index],
+                                    width: 100, // Adjust the size as needed
+                                    height: 100,
+                                    fit: index == 2 ? BoxFit.cover : index == 10? BoxFit.fill : BoxFit.contain,
+                                  ),
+                                  Text(
+                                    subChapters[index],
+                                    style: const TextStyle(
+                                      fontSize: 18,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                    textAlign: TextAlign.center,
+                                  )
+                                ],
+                              )
+                          )
                       ),
                     );
                   },

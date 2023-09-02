@@ -77,6 +77,34 @@ flutter:
     - lib/assets/moon.png
     - lib/assets/earth.jpg
     - lib/assets/back.gif
+    - lib/assets/vector/ch1.png
+    - lib/assets/vector/ch2.png
+    - lib/assets/vector/ch3.png
+    - lib/assets/vector/ch4.png
+    - lib/assets/vector/ch5.png
+    - lib/assets/vector/ch6.png
+    - lib/assets/vector/ch7.png
+    - lib/assets/vector/ch8.png
+    - lib/assets/vector/ch9.png
+    - lib/assets/vector/ch10.png
+    - lib/assets/vector/ch11.png
+    - lib/assets/vector/ch12.png
+    - lib/assets/vector/ch13.png
+    - lib/assets/vector/ch14.png
+    - lib/assets/vector/ch15.png
+    - lib/assets/vector/subchapter/subch1.png
+    - lib/assets/vector/subchapter/subch2.png
+    - lib/assets/vector/subchapter/subch3.png
+    - lib/assets/vector/subchapter/subch4.png
+    - lib/assets/vector/subchapter/subch5.png
+    - lib/assets/vector/subchapter/subch6.png
+    - lib/assets/vector/subchapter/subch7.png
+    - lib/assets/vector/subchapter/subch8.png
+    - lib/assets/vector/subchapter/subch9.png
+    - lib/assets/vector/subchapter/subch10.png
+    - lib/assets/vector/subchapter/subch11.png
+    - lib/assets/vector/subchapter/subch12.png
+    - lib/assets/vector/subchapter/subch13.png
 
       # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
