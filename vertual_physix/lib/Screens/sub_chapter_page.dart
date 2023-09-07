@@ -1,3 +1,4 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:virtual_physix/Screens/com_ar.dart';
 import 'package:virtual_physix/Screens/space_ar.dart';
@@ -29,21 +30,21 @@ class _SelectSubChapterPageState extends State<SelectSubChapterPage> {
   ];
 
   final List<String> subChapterImages = [
-    'lib/assets/vector/subchapter/subch1.png',
-    'lib/assets/vector/subchapter/subch2.png',
-    'lib/assets/vector/subchapter/subch3.png',
-    'lib/assets/vector/subchapter/subch4.png',
-    'lib/assets/vector/subchapter/subch5.png',
-    'lib/assets/vector/subchapter/subch6.png',
-    'lib/assets/vector/subchapter/subch7.png',
-    'lib/assets/vector/subchapter/subch8.png',
-    'lib/assets/vector/subchapter/subch9.png',
-    'lib/assets/vector/subchapter/subch10.png',
-    'lib/assets/vector/subchapter/subch11.png',
-    'lib/assets/vector/subchapter/subch12.png',
-    'lib/assets/vector/subchapter/subch13.png',
+    'assets/vector/subchapter/subch1.png',
+    'assets/vector/subchapter/subch2.png',
+    'assets/vector/subchapter/subch3.png',
+    'assets/vector/subchapter/subch4.png',
+    'assets/vector/subchapter/subch5.png',
+    'assets/vector/subchapter/subch6.png',
+    'assets/vector/subchapter/subch7.png',
+    'assets/vector/subchapter/subch8.png',
+    'assets/vector/subchapter/subch9.png',
+    'assets/vector/subchapter/subch10.png',
+    'assets/vector/subchapter/subch11.png',
+    'assets/vector/subchapter/subch12.png',
+    'assets/vector/subchapter/subch13.png',
   ];
-
+  final plyer = AudioPlayer();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,6 +54,7 @@ class _SelectSubChapterPageState extends State<SelectSubChapterPage> {
         titleSpacing: 0,
         leading: IconButton(
           onPressed: () {
+            plyer.play(AssetSource('click.wav'));
             Navigator.of(context).pop();
           },
           icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
@@ -92,11 +94,12 @@ class _SelectSubChapterPageState extends State<SelectSubChapterPage> {
                   itemBuilder: (context, index) {
                     return GestureDetector(
                       onTap: () {
+                        plyer.play(AssetSource('click.wav'));
                         Navigator.push(
                           context,
                           PageRouteBuilder(
                             pageBuilder: (context, animation, secondaryAnimation) =>
-                            const SelectSubChapterPage(),
+                            const ARScreen1(),
                             transitionsBuilder:
                                 (context, animation, secondaryAnimation, child) {
                               const begin = Offset(1.0, 0.0);

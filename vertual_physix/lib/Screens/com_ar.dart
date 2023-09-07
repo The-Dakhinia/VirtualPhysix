@@ -1,3 +1,4 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 
 import 'package:arcore_flutter_plugin/arcore_flutter_plugin.dart';
@@ -15,7 +16,7 @@ class ARScreen1 extends StatefulWidget {
 class _ARScreen1State extends State<ARScreen1> {
 
   late ArCoreController arCoreController;
-
+  final plyer = AudioPlayer();
   @override
   void dispose() {
     super.dispose();
@@ -30,19 +31,22 @@ class _ARScreen1State extends State<ARScreen1> {
   void controlOnPlaneTap(List<ArCoreHitTestResult> hitsResults){
     final hit  = hitsResults.first;
     //adding the characters
-    addCharcter(hit);
+    addObject(hit);
   }
 
-  Future addCharcter(ArCoreHitTestResult hit) async{
-    final bytes = (await rootBundle.load("lib/assets/com.png")).buffer.asUint8List();
+  void addObject(ArCoreHitTestResult plane) async {
+    // final ByteData data = await rootBundle.load('assets/Chicken_01/Chicken_01.gltf');
+    // final Uint8List bytes = data.buffer.asUint8List();
 
-    final characterPos = ArCoreNode(
-      image: ArCoreImage(bytes:  bytes, width: 544, height: 340),
-      position: hit.pose.translation + vector.Vector3(0.0, 0.0, 0.0),
-      rotation: hit.pose.rotation + vector.Vector4(0.0, 0.0, 0.0, 0.0),
+    final objectNode = ArCoreReferenceNode(
+      name: 'object_node',
+      objectUrl: 'https://github.com/KhronosGroup/glTF-Sample-Models/raw/master/2.0/Fox/glTF-Binary/Fox.glb',
+      // objectUrl: 'https://github.com/KhronosGroup/glTF-Sample-Models/raw/master/2.0/BrainStem/glTF-Binary/BrainStem.glb',
+      position: plane.pose.translation,
+      scale: vector.Vector3(0.01, 0.01, 0.01), // Adjust the scale as needed
     );
 
-    arCoreController.addArCoreNodeWithAnchor(characterPos);
+    arCoreController.addArCoreNode(objectNode);
   }
 
   @override
@@ -52,13 +56,14 @@ class _ARScreen1State extends State<ARScreen1> {
         titleSpacing: 0,
         leading: IconButton(
           onPressed: () {
+            plyer.play(AssetSource('click.wav'));
             Navigator.of(context).pop();
           },
           icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
         ),
         backgroundColor: Colors.purple,
         title: const Text(
-          "Conservation of Momentum",
+          "COM",
           style: TextStyle(fontSize: 23, color: Colors.white),
         ),
         centerTitle: true,

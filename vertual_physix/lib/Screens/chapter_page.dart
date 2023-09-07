@@ -1,3 +1,4 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'sub_chapter_page.dart';
 
@@ -20,21 +21,21 @@ List<String> chapters = [
 ];
 
 List<String> chapterImages = [
-  'lib/assets/vector/ch1.png',
-  'lib/assets/vector/ch2.png',
-  'lib/assets/vector/ch3.png',
-  'lib/assets/vector/ch4.png',
-  'lib/assets/vector/ch5.png',
-  'lib/assets/vector/ch6.png',
-  'lib/assets/vector/ch7.png',
-  'lib/assets/vector/ch8.png',
-  'lib/assets/vector/ch9.png',
-  'lib/assets/vector/ch10.png',
-  'lib/assets/vector/ch11.png',
-  'lib/assets/vector/ch12.png',
-  'lib/assets/vector/ch13.png',
-  'lib/assets/vector/ch14.png',
-  'lib/assets/vector/ch15.png',
+  'assets/vector/ch1.png',
+  'assets/vector/ch2.png',
+  'assets/vector/ch3.png',
+  'assets/vector/ch4.png',
+  'assets/vector/ch5.png',
+  'assets/vector/ch6.png',
+  'assets/vector/ch7.png',
+  'assets/vector/ch8.png',
+  'assets/vector/ch9.png',
+  'assets/vector/ch10.png',
+  'assets/vector/ch11.png',
+  'assets/vector/ch12.png',
+  'assets/vector/ch13.png',
+  'assets/vector/ch14.png',
+  'assets/vector/ch15.png',
 ];
 
 class SelectChapterPage extends StatefulWidget {
@@ -46,7 +47,7 @@ class SelectChapterPage extends StatefulWidget {
 
 class _SelectChapterPageState extends State<SelectChapterPage> {
 
-
+  final plyer = AudioPlayer();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,6 +57,7 @@ class _SelectChapterPageState extends State<SelectChapterPage> {
         titleSpacing: 0,
         leading: IconButton(
           onPressed: () {
+            plyer.play(AssetSource('click.wav'));
             Navigator.of(context).pop();
           },
           icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
@@ -95,6 +97,7 @@ class _SelectChapterPageState extends State<SelectChapterPage> {
                   itemBuilder: (context, index) {
                     return GestureDetector(
                       onTap: () {
+                        plyer.play(AssetSource('click.wav'));
                         Navigator.push(
                           context,
                           PageRouteBuilder(
