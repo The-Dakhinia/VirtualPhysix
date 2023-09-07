@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:virtual_physix/main.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:audioplayers/audioplayers.dart';
 
 
 import '../Services/auth_services.dart';
@@ -21,6 +22,7 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   bool _isAnimate = false;
+  final plyer = AudioPlayer();
 
   @override
   void initState() {
@@ -30,13 +32,13 @@ class _LoginScreenState extends State<LoginScreen> {
     Future.delayed(const Duration(milliseconds: 500), () {
       setState(() => _isAnimate = true);
     });
+    plyer.play(AssetSource('back.wav'));
   }
   // Initialize the firebase
   Future<void> initializeFirebase() async {
     await Firebase.initializeApp();
     // _firestore = FirebaseFirestore.instance;
   }
-
   @override
   Widget build(BuildContext context) {
 
@@ -58,7 +60,7 @@ class _LoginScreenState extends State<LoginScreen> {
         // Background GIF
         Positioned.fill(
           child: Image.asset(
-            'lib/assets/back.gif', // Replace with the actual path to your GIF image
+            'assets/back.gif', // Replace with the actual path to your GIF image
             fit: BoxFit.cover, // Adjust the fit as needed
           ),
         ),
@@ -70,7 +72,7 @@ class _LoginScreenState extends State<LoginScreen> {
           curve: Curves.easeInOut,
           child: Transform.scale(
             scale: 1.7,  // Scale factor of 2 for doubling the size
-            child: Image.asset('lib/assets/logo.png'),
+            child: Image.asset('assets/logo.png'),
           ),
         ),
 
@@ -88,6 +90,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     elevation: 1,
                 ),
                 onPressed: () async {
+                  plyer.stop();
+                  plyer.play(AssetSource('click.wav'));
                   showDialog(
                     context: context,
                     barrierDismissible: false,
@@ -107,7 +111,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 },
 
                 //google icon
-                icon: Image.asset('lib/assets/google.png', height: mq.height * .03),
+                icon: Image.asset('assets/google.png', height: mq.height * .03),
 
                 //login with google label
                 label: RichText(

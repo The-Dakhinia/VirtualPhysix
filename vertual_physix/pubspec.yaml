@@ -44,6 +44,7 @@ dependencies:
   flutter_spinkit: ^5.2.0
   flutter_slidable: ^3.0.0
   google_fonts: ^4.0.4
+  audioplayers: ^4.1.0
 
 
 dev_dependencies:
@@ -70,41 +71,45 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - lib/assets/google.png
-    - lib/assets/logo.png
-    - lib/assets/com.png
-    - lib/assets/sun.jpg
-    - lib/assets/moon.png
-    - lib/assets/earth.jpg
-    - lib/assets/back.gif
-    - lib/assets/vector/ch1.png
-    - lib/assets/vector/ch2.png
-    - lib/assets/vector/ch3.png
-    - lib/assets/vector/ch4.png
-    - lib/assets/vector/ch5.png
-    - lib/assets/vector/ch6.png
-    - lib/assets/vector/ch7.png
-    - lib/assets/vector/ch8.png
-    - lib/assets/vector/ch9.png
-    - lib/assets/vector/ch10.png
-    - lib/assets/vector/ch11.png
-    - lib/assets/vector/ch12.png
-    - lib/assets/vector/ch13.png
-    - lib/assets/vector/ch14.png
-    - lib/assets/vector/ch15.png
-    - lib/assets/vector/subchapter/subch1.png
-    - lib/assets/vector/subchapter/subch2.png
-    - lib/assets/vector/subchapter/subch3.png
-    - lib/assets/vector/subchapter/subch4.png
-    - lib/assets/vector/subchapter/subch5.png
-    - lib/assets/vector/subchapter/subch6.png
-    - lib/assets/vector/subchapter/subch7.png
-    - lib/assets/vector/subchapter/subch8.png
-    - lib/assets/vector/subchapter/subch9.png
-    - lib/assets/vector/subchapter/subch10.png
-    - lib/assets/vector/subchapter/subch11.png
-    - lib/assets/vector/subchapter/subch12.png
-    - lib/assets/vector/subchapter/subch13.png
+    - assets/google.png
+    - assets/logo.png
+    - assets/com.png
+    - assets/sun.jpg
+    - assets/moon.png
+    - assets/earth.jpg
+    - assets/back.gif
+    - assets/back.wav
+    - assets/click.wav
+    - assets/load.wav
+    - assets/login.wav
+    - assets/vector/ch1.png
+    - assets/vector/ch2.png
+    - assets/vector/ch3.png
+    - assets/vector/ch4.png
+    - assets/vector/ch5.png
+    - assets/vector/ch6.png
+    - assets/vector/ch7.png
+    - assets/vector/ch8.png
+    - assets/vector/ch9.png
+    - assets/vector/ch10.png
+    - assets/vector/ch11.png
+    - assets/vector/ch12.png
+    - assets/vector/ch13.png
+    - assets/vector/ch14.png
+    - assets/vector/ch15.png
+    - assets/vector/subchapter/subch1.png
+    - assets/vector/subchapter/subch2.png
+    - assets/vector/subchapter/subch3.png
+    - assets/vector/subchapter/subch4.png
+    - assets/vector/subchapter/subch5.png
+    - assets/vector/subchapter/subch6.png
+    - assets/vector/subchapter/subch7.png
+    - assets/vector/subchapter/subch8.png
+    - assets/vector/subchapter/subch9.png
+    - assets/vector/subchapter/subch10.png
+    - assets/vector/subchapter/subch11.png
+    - assets/vector/subchapter/subch12.png
+    - assets/vector/subchapter/subch13.png
 
       # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

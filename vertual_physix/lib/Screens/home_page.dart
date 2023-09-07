@@ -1,3 +1,4 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -19,6 +20,7 @@ class _HomePageState extends State<HomePage> {
 
   String userProfilePic = "";
   String userName = "";
+  final plyer = AudioPlayer();
 
   @override
   void initState() {
@@ -27,6 +29,7 @@ class _HomePageState extends State<HomePage> {
     showWelcomeSnackBar();
   }
   void showWelcomeSnackBar() {
+    plyer.play(AssetSource('login.wav'));
     WidgetsBinding.instance!.addPostFrameCallback((_) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
@@ -135,6 +138,7 @@ class _HomePageState extends State<HomePage> {
                       itemBuilder: (context, index) {
                         return GestureDetector(
                           onTap: () {
+                            plyer.play(AssetSource('click.wav'));
                             Navigator.push(
                               context,
                               PageRouteBuilder(
@@ -196,6 +200,7 @@ class _HomePageState extends State<HomePage> {
         size: MediaQuery.of(context).size.height * 0.03,
       ),
       onSelected: (String result) {
+        plyer.play(AssetSource('click.wav'));
         if (result == 'logout') {
           // Handle the logout action here
           AuthService.signOut();
